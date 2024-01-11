@@ -4,6 +4,7 @@ import 'express-async-errors'
 import httpStatus from 'http-status'
 import participantsRouter from './routers/participants.routes'
 import errorHandlingMiddleware from './middlewares/error-handler'
+import gamesRouter from './routers/games.routes'
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.get('/health', (req: Request, res: Response) => {
   });
 
 app.use('/participants', participantsRouter);
+app.use('/games', gamesRouter);
 
 app.use(errorHandlingMiddleware);
   

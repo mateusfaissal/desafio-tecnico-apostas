@@ -24,8 +24,21 @@ async function getById(gameId: number) {
     return game;
 }
 
+async function getByIdWithBets(gameId: number) {
+    const gameAndBets = prisma.game.findUnique({
+        where: {
+            id: gameId
+        },
+        include: {
+            bet: true
+        }
+    })
+    return gameAndBets;
+}
+
 export const gameRepository = {
     create,
     get,
-    getById
+    getById,
+    getByIdWithBets
 };

@@ -7,6 +7,6 @@ const gamesRouter = Router();
 
 gamesRouter.post('/', validateSchemaMiddleware(gameSchema), gameController.create)
 gamesRouter.get('/', gameController.get)
-gamesRouter.get('/:id', gameController.getById)
+gamesRouter.get('/:id', gameController.getByIdWithBets)
 
 export default gamesRouter;

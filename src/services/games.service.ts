@@ -19,8 +19,19 @@ async function getById(gameId: number) {
     return game;
 }
 
+async function getByIdWithBets(gameId: number) {
+    const gameAndBets = await gameRepository.getByIdWithBets(gameId);
+
+    if (!gameAndBets) {
+        throw notFoundError();
+    }
+
+    return gameAndBets;
+}
+
 export const gameService = {
     create,
     get,
-    getById
+    getById,
+    getByIdWithBets
 }

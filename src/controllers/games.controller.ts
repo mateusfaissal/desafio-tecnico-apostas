@@ -19,14 +19,28 @@ async function get(req: Request, res: Response) {
 async function getById(req: Request, res: Response) {
     const id = Number(req.params.id);
 
-    if (!id || isNaN(id) || id < 1) throw invalidIdError();
+    if (!id || isNaN(id) || id < 1) {
+        throw invalidIdError();
+    } 
 
     const game = await gameService.getById(id);
     res.status(httpStatus.OK).send(game);
 }
 
+async function getByIdWithBets(req: Request, res: Response) {
+    const id = Number(req.params.id);
+
+    if (!id || isNaN(id) || id < 1) {
+        throw invalidIdError();
+    }
+
+    const gameAndBets = await gameService.getByIdWithBets(id);
+    res.status(httpStatus.OK).send(gameAndBets);
+}
+
 export const gameController = {
     create,
     get,
-    getById
+    getById,
+    getByIdWithBets
 };

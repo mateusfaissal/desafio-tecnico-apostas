@@ -138,10 +138,6 @@ async function finish(id: number, gameResult: FinishGame) {
     })
 }
 
-
-
-
-
 export const gameService = {
     create,
     get,

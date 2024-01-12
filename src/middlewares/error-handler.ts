@@ -20,6 +20,17 @@ export default function errorHandlingMiddleware(
       return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
   }
 
+  if (error.name === 'invalidOperationError') {
+    return res.status(httpStatus.FORBIDDEN).send(error.message);
+}
+  if (error.name === 'balanceError') {
+    return res.status(httpStatus.FORBIDDEN).send(error.message);
+  }
+
+  if (error.name === 'belowMinimumBetError') {
+    return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
+  }
+
   console.log(error);
   return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
 }

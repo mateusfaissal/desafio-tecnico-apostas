@@ -15,7 +15,30 @@ async function get() {
     return participants;
 }
 
+async function getById(participantId: number) {
+    const participant = prisma.participant.findUnique({
+        where: {
+            id: participantId
+        }
+    })
+    return participant;
+}
+
+async function update(id: number, balance: number) {
+    const newBalance = prisma.participant.update({
+        where: {
+            id: id
+        },
+        data: {
+            balance: balance
+        }
+    })
+    return newBalance;
+}
+
 export const participantRepository = {
     create,
     get,
+    getById,
+    update
 };

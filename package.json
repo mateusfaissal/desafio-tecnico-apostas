@@ -8,7 +8,8 @@
     "build": "tsc --project tsconfig.build.json && tsc-alias",
     "start": "prisma migrate deploy && node dist/src/server.js",
     "test": "dotenv -e .env.test prisma migrate deploy & dotenv -e .env.test jest -- -i",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "npm run test -- --coverage",
+    "test:report": "dotenv -e .env.test prisma migrate deploy & dotenv -e .env.test jest -- --coverage --runInBand --coverageReporters=json-summary --coverageDirectory=coverage --collectCoverageFrom='**/*.ts'"
   },
   "keywords": [],
   "author": "",

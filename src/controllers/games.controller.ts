@@ -1,4 +1,5 @@
 import { invalidIdError } from '@/errors/invalid-id-error';
+import { FinishGame } from '@/schemas';
 import { gameService } from '@/services/games.service';
 import { game } from '@prisma/client';
 import { Request, Response } from 'express';
@@ -38,9 +39,24 @@ async function getByIdWithBets(req: Request, res: Response) {
     res.status(httpStatus.OK).send(gameAndBets);
 }
 
+async function finish(req: Request, res: Response) {
+    const id = Number(req.params.id);
+
+    if (!id || isNaN(id) || id < 1) {
+        throw invalidIdError();
+    }
+
+    const finishGameReq = req.body as FinishGame
+
+    const finishGame = await gameService.finish(id, finishGameReq)
+
+    res.status(httpStatus.OK).send(finishGame);
+}
+
 export const gameController = {
     create,
     get,
     getById,
-    getByIdWithBets
+    getByIdWithBets,
+    finish
 };

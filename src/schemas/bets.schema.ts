@@ -11,3 +11,8 @@ export const betSchema = Joi.object<BetWithoutIdAndDates> ({
 
 export type BetWithoutIdAndDates = Omit<bet, "id" | "createdAt" | "updatedAt">
 export type BetReqInput = Omit<BetWithoutIdAndDates, "status" | "amountWon">;
+export type ForCalcBets = {
+    betsTotal: number;
+    wonBetsTotal: number;
+  };
+export type ForUpdateBets = Omit<bet, "id" | "createdAt" | "updatedAt" | "homeTeamScore" | "awayTeamScore" | "amountBet" | "gameId" | "participantId">;

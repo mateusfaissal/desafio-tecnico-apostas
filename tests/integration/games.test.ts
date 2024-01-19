@@ -18,7 +18,7 @@ beforeEach(async () => {
         expect(res.status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
     });
 
-    it("Should respond with a status code of 201 when a participant is succesfully created", async () => {
+    it("Should respond with a status code of 201 when a game is succesfully created", async () => {
         const fakeGame = createFakeGame();
         const res = await server.post('/games').send(fakeGame);
 

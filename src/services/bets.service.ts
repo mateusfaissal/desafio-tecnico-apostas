@@ -45,11 +45,13 @@ function validateIsFinished(game: game) {
 }
 
 function validateBetAmount(betAmount: number, balance: number) {
+    const minimumAmount = 1000;
+
     if (betAmount > balance) {
         throw balanceError();
     }
 
-    if (betAmount < 1000) {
+    if (betAmount < minimumAmount) {
         throw belowMinimumBetError();
     }
 }

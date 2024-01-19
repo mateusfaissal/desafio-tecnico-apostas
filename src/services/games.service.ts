@@ -46,12 +46,14 @@ function hasWon(bet: bet, gameFinished: FinishGame) {
 function calcAmount(amountBet: number, calcBets: ForCalcBets) {
     const { betsTotal, wonBetsTotal } = calcBets;
 
+    const houseFee = 0.3;
+
     if (wonBetsTotal === 0) {
         return 0;
     }
 
     const winningPercentage = amountBet / wonBetsTotal;
-    const totalAmountWon = winningPercentage * betsTotal * (1 - 0.3);
+    const totalAmountWon = winningPercentage * betsTotal * (1 - houseFee);
     
     return totalAmountWon;
 

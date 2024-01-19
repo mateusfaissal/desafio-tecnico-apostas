@@ -1,6 +1,6 @@
 export function invalidOperationError() {
     return {
-        name: "invaliOperationError",
+        name: "invalidOperationError",
         message: "You cannot bet on a game that is already finished"
     }
 }

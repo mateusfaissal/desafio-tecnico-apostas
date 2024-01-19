@@ -17,13 +17,13 @@ export async function createFakeParticipant() {
  export function fakeParticipantReqBody() {
      return {
         name: faker.person.firstName() + "" + faker.person.lastName(),
-         balance: faker.number.int({min: 1000, max: 999999})
+        balance: faker.number.int({min: 1000, max: 999999})
      }
  }
 
  export function fakeParticipantReqBodyWithoutMinBalance() {
     return {
-       name: faker.person.firstName() + "" + faker.person.lastName(),
+        name: faker.person.firstName() + "" + faker.person.lastName(),
         balance: faker.number.int({min: 0, max: 999})
     }
 }

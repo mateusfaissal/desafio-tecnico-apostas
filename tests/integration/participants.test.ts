@@ -59,8 +59,9 @@ beforeEach(async () => {
     it("Should respond with a status code of 422 when a participant is created without the minimum balance amount", async () => {
         const fakeParticipant = fakeParticipantReqBodyWithoutMinBalance();
         const res = await server.post('/participants').send(fakeParticipant);
-
+        
         expect(res.status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
+        expect(res.text).toEqual('{\"error\":\"\\\"balance\\\" must be greater than or equal to 1000\"}')
     })
   })
 

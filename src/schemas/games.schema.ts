@@ -12,3 +12,5 @@ export const gameFinishSchema = Joi.object<game>({
 });
 
 export type FinishGame = Omit<game, "id" | "createdAt" | "updatedAt" | "homeTeamName" | "awayTeamName" | "isFinished">
+
+export type InputGame = Omit<game, "id" | "createdAt" | "updatedAt" | "homeTeamScore" | "awayTeamScore" | "isFinished">
